@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Raw HTML</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: monospace;
+            overflow: hidden;
+            background: black;
+            height: 100vh; /* Ensure the body takes full viewport height */
+        }
+        
+        #content {
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            border: none;
+            outline: none;
+            z-index: 0; /* Ensure it's below the animation and unlock message */
+        }
+        
+        #animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            color: lime;
+            font-size: 1.5em;
+            line-height: 1.2;
+            overflow: hidden;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .falling {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        #unlockMessage {
+            display: none;
+            font-size: 2em;
+            color: lime;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="content" tabindex="0"></iframe>
+
+    <div id="animation"></div>
+    <div id="unlockMessage" class="falling">UNLOCKED</div>
+
+    <script>
+        async function loadContent() {
+            try {
+                const response = await fetch('https://raw.githubusercontent.com/vidio-boy/Eaglercraft1.5.2/main/eaglercraft.1.5.2.html');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const text = await response.text();
+                const iframe = document.getElementById('content');
+
+                iframe.onload = function() {
+                    console.log('Iframe loaded successfully');
+                    iframe.focus(); // Fix focus issue for keyboard input
+                };
+                
+                iframe.srcdoc = text;
+
+                // Hide animation and show content after loading
+                setTimeout(() => {
+                    document.getElementById('animation').style.display = 'none';
+                    document.getElementById('unlockMessage').style.display = 'none';
+                }, 5000); // 5 seconds animation
+
+            } catch (error) {
+                console.error('Error fetching the content:', error);
+            }
+        }
+
+        function createAnimation() {
+            const animation = document.getElementById('animation');
+            const unlockMessage = document.getElementById('unlockMessage');
+            let binaryString = '';
+
+            function generateBinary() {
+                binaryString = '';
+                for (let i = 0; i < 200; i++) {
+                    binaryString += Math.random() > 0.5 ? '0' : '1';
+                }
+                return binaryString;
+            }
+
+            function updateAnimation() {
+                const lines = [];
+                for (let i = 0; i < Math.ceil(window.innerHeight / 30); i++) {
+                    lines.push(generateBinary());
+                }
+                animation.innerHTML = lines.join('<br>');
+            }
+
+            function revealUnlockMessage() {
+                unlockMessage.textContent = 'UNLOCKED';
+                unlockMessage.style.display = 'block';
+                unlockMessage.classList.add('falling');
+            }
+
+            // Start animation
+            updateAnimation();
+            const interval = setInterval(() => {
+                updateAnimation();
+            }, 100);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                revealUnlockMessage();
+                loadContent(); // Load content after animation
+            }, 5000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createAnimation();
+        });
+    </script>
+</body>
+</html>
