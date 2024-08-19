@@ -3,29 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blue Shark</title>
-    <h1>Home of the Unblocked Games</h1>
+    <title>OHS Foundation</title>
     <style>
       body {
         margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(to bottom, #e0f7fa, #00796b);
-        color: #00796b;
+        font-family: "Courier New", Courier, monospace;
+        background: linear-gradient(
+          to bottom,
+          #001f3f,
+          #000000
+        ); /* Dark blue to black gradient */
+        color: #00ff00;
         text-align: center;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background: #111111;
+        border-bottom: 2px solid #00ff00;
+      }
+
+      .header img {
+        width: 50px;
+        height: auto;
+        margin-right: 10px;
+      }
+
+      .header h1 {
+        font-size: 2em;
+        color: #00ff00;
+        margin: 0;
       }
 
       .container {
         padding: 20px;
-      }
-      h1 {
-        color: #ffffff;
-        background: linear-gradient(to right, #00acc1, #00796b);
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-family: "Arial", sans-serif;
-        font-size: 3em;
-        margin-bottom: 20px;
-        padding: 10px;
       }
 
       .search-bar {
@@ -36,8 +50,10 @@
       .search-bar input {
         width: 100%;
         padding: 10px;
-        border: 2px solid #00796b;
+        border: 2px solid #00ff00;
         border-radius: 5px;
+        background: #222222;
+        color: #00ff00;
       }
 
       .grid-container {
@@ -50,47 +66,31 @@
 
       .grid-item {
         text-align: center;
-        color: #ffffff;
       }
 
       .grid-btn {
-        width: 100px; /* Set the desired button size */
-        height: 100px; /* Set the desired button size */
+        width: 100px;
+        height: 100px;
         border-radius: 12px;
-        border: 2px solid #00796b;
-        background-color: #ffffff;
+        border: 2px solid #00ff00;
+        background-color: #111111;
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
-        overflow: hidden; /* Hide any overflow of the image */
+        overflow: hidden;
       }
-      .grid-b {
-        width: 100px; /* Set the desired button size */
-        height: 100px; /* Set the desired button size */
-        border-radius: 12px;
-        border: 2px solid #fbff00;
-        background-color: #ffffff;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden; /* Hide any overflow of the image */
-      }
-      .grid-b img {
-        width: 200%;
-        height: 150%;
-        /* Ensure the image fits within the button */
-      }
+
       .grid-btn img {
         width: 200%;
-        height: 150%;
-        /* Ensure the image fits within the button */
+        height: 140%;
+        object-fit: cover;
       }
 
       .grid-item p {
         margin-top: 5px;
-        font-size: 12px;
+        font-size: 14px;
+        color: #00ff00;
       }
 
       .overlay {
@@ -100,51 +100,62 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.7);
         justify-content: center;
         align-items: center;
       }
 
       .overlay-content {
-        background-color: #ffffff;
+        background-color: #111111;
         padding: 20px;
         border-radius: 10px;
         text-align: center;
+        color: #00ff00;
       }
 
       #password-input {
         padding: 10px;
         margin-bottom: 10px;
-        border: 1px solid #00796b;
+        border: 1px solid #00ff00;
         border-radius: 5px;
+        background: #222222;
+        color: #00ff00;
       }
 
       button {
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
-        background-color: #9db3b0;
-        color: #ffffff;
+        background-color: #00ff00;
+        color: #000000;
         cursor: pointer;
       }
 
       button:hover {
-        background-color: #004d40;
+        background-color: #009900;
       }
-      .one {
-        color: aliceblue;
+
+      .version-info {
+        color: #00ff00;
+        margin: 20px 0;
+      }
+
+      iframe {
+        border: none;
+        margin-top: 20px;
       }
     </style>
   </head>
   <body>
+    <div class="header">
+      <img src="src/OHS.webp" alt="OHS Logo" />
+      <h1>OHS FOUNDATION</h1>
+    </div>
     <div class="container">
-      <h1>BLUE SHARK</h1>
-      <div class="gif-container">
-        <img
-          src="src/input-onlinegiftools.gif"
-          alt="Shark GIF"
-          class="main-gif"
-        />
+      <div class="blue-shark-container">
+        <h1>Blue Shark</h1>
+        <p class="home-of-games">Home of the Unblocked Games</p>
+        <img src="src/input-onlinegiftools.gif" alt="Blue Shark" />
       </div>
       <div class="search-bar">
         <input
@@ -154,7 +165,7 @@
           oninput="filterGames()"
         />
       </div>
-      <p class="one">
+      <p class="version-info">
         Don't worry about losing data, most of these save (such as Cookie
         Clicker)
       </p>
@@ -169,17 +180,15 @@
           </button>
           <p>Unblocked Google</p>
         </div>
-
         <div class="grid-item">
           <button
-            class="grid-b"
+            class="grid-btn"
             onclick="redirectTo('src/sites/Minecraft.html', true)"
           >
             <img src="src/minecraft.jpg" alt="Minecraft" />
           </button>
           <p>Minecraft 3.0</p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -189,7 +198,6 @@
           </button>
           <p>Slope (Classroom 6x)</p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -199,7 +207,6 @@
           </button>
           <p>Cookie Clicker (Classroom 6x)</p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -209,7 +216,6 @@
           </button>
           <p>Eggy Car (Classroom 6x)</p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -219,7 +225,6 @@
           </button>
           <p>Now.GG</p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -229,7 +234,6 @@
           </button>
           <p>Evil Reddit</p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -239,7 +243,6 @@
           </button>
           <p>Suika Watermelon (Classroom 6x)</p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -249,7 +252,6 @@
           </button>
           <p>Knock-off Melon Playground (Classroom 6x)</p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -259,7 +261,6 @@
           </button>
           <p>Tiktok</p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -269,7 +270,6 @@
           </button>
           <p>Useless Website Button</p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -279,7 +279,6 @@
           </button>
           <p>Discord</p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -289,7 +288,6 @@
           </button>
           <p>Astroid V3 (Hundreds of unblocked games and unblocked google)</p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -299,7 +297,6 @@
           </button>
           <p></p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -309,7 +306,6 @@
           </button>
           <p>Classroom 6x (Hundreds of unblocked games)</p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -319,7 +315,6 @@
           </button>
           <p>Visual Studio Code</p>
         </div>
-
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -329,22 +324,27 @@
           </button>
           <p>Scratch Terraria (Does not save)</p>
         </div>
-
         <div class="grid-item">
-            <button
-              class="grid-btn"
-              onclick="redirectTo('src/sites/a.html', true)"
-            >
-              <img src="src/roblox.png" alt="Roblox" />
-            </button>
-            <p>Roblox</p>
+          <button
+            class="grid-btn"
+            onclick="redirectTo('src/sites/a.html', true)"
+          >
+            <img src="src/roblox.png" alt="Roblox" />
+          </button>
+          <p>Roblox</p>
         </div>
-
-</body>
-</html>
-
       </div>
     </div>
+    <div class="version-info">version 1.2</div>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSd4Jv0HcBfN2tNTMI3afL3jGusrQBwyTnL4zSKm_vjQCnobsA/viewform?usp=sf_link?embedded=true"
+      width="640"
+      height="800"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0"
+      >Loading…</iframe
+    >
     <script>
       function redirectTo(url, cloak) {
         if (cloak) {
@@ -379,9 +379,5 @@
         });
       }
     </script>
-            <p class="one">version 1.1.0 (A..1)</p>
-            <!DOCTYPE html>
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd4Jv0HcBfN2tNTMI3afL3jGusrQBwyTnL4zSKm_vjQCnobsA/viewform?usp=sf_link?embedded=true" 
-            width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
   </body>
 </html>
