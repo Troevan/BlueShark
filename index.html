@@ -7,61 +7,118 @@
     <style>
       body {
         margin: 0;
-        font-family: "Courier New", Courier, monospace;
+        font-family: "Arial", sans-serif;
         background: linear-gradient(
           to bottom,
-          #001f3f,
+          #030303,
           #000000
         ); /* Dark blue to black gradient */
         color: #00ff00;
         text-align: center;
+        overflow-x: hidden;
       }
 
       .header {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 10px;
-        background: #111111;
-        border-bottom: 2px solid #00ff00;
+        padding: 15px;
+        background: #222222;
+        border-bottom: 3px solid #00ff00;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        animation: slideIn 1s ease-out;
       }
 
       .header img {
-        width: 50px;
+        width: 60px;
         height: auto;
-        margin-right: 10px;
+        margin-right: 15px;
+        transition: transform 0.3s ease;
+      }
+
+      .header img:hover {
+        transform: scale(1.1);
       }
 
       .header h1 {
-        font-size: 2em;
+        font-size: 2.5em;
         color: #00ff00;
         margin: 0;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
       }
 
       .container {
-        padding: 20px;
+        padding: 30px;
       }
 
       .search-bar {
-        margin: 20px auto;
-        max-width: 500px;
+        margin: 30px auto;
+        max-width: 600px;
       }
 
       .search-bar input {
         width: 100%;
-        padding: 10px;
+        padding: 12px;
         border: 2px solid #00ff00;
-        border-radius: 5px;
+        border-radius: 8px;
         background: #222222;
         color: #00ff00;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      .search-bar input:focus {
+        border-color: #009900;
+        outline: none;
+      }
+
+      .big-buttons-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 50px;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .big-btn {
+        width: 220px;
+        height: 220px;
+        border-radius: 20px;
+        border: 4px solid #00ff00;
+        background-color: #111111;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .big-btn img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        transition: opacity 0.3s ease;
+      }
+
+      .big-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .big-btn:hover img {
+        opacity: 0.8;
       }
 
       .grid-container {
         display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        gap: 10px;
-        margin: 20px auto;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+        margin: 30px auto;
         max-width: 1200px;
+        animation: fadeInUp 1.5s ease-out;
       }
 
       .grid-item {
@@ -79,18 +136,25 @@
         justify-content: center;
         align-items: center;
         overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
       .grid-btn img {
-        width: 200%;
-        height: 140%;
+        width: 100%;
+        height: auto;
         object-fit: cover;
+      }
+
+      .grid-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
       }
 
       .grid-item p {
         margin-top: 5px;
         font-size: 14px;
         color: #00ff00;
+        transition: opacity 0.3s ease;
       }
 
       .overlay {
@@ -103,53 +167,93 @@
         background-color: rgba(0, 0, 0, 0.7);
         justify-content: center;
         align-items: center;
+        animation: fadeIn 0.5s ease-out;
       }
 
       .overlay-content {
         background-color: #111111;
-        padding: 20px;
-        border-radius: 10px;
+        padding: 25px;
+        border-radius: 15px;
         text-align: center;
         color: #00ff00;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       }
 
       #password-input {
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #00ff00;
-        border-radius: 5px;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 2px solid #00ff00;
+        border-radius: 8px;
         background: #222222;
         color: #00ff00;
+        font-size: 16px;
       }
 
       button {
-        padding: 10px 20px;
+        padding: 12px 24px;
         border: none;
-        border-radius: 5px;
+        border-radius: 8px;
         background-color: #00ff00;
         color: #000000;
         cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
       }
 
       button:hover {
         background-color: #009900;
+        transform: scale(1.05);
       }
 
       .version-info {
         color: #00ff00;
-        margin: 20px 0;
+        margin: 30px 0;
+        animation: fadeInUp 2s ease-out;
       }
 
       iframe {
         border: none;
-        margin-top: 20px;
+        margin-top: 30px;
+        width: 100%;
+        max-width: 640px;
+        height: 800px;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     </style>
   </head>
   <body>
     <div class="header">
       <img src="src/OHS.webp" alt="OHS Logo" />
-      <h1>OHS FOUNDATION - Troevan</h1>
+      <h1>OHS FOUNDATION</h1>
     </div>
     <div class="container">
       <div class="blue-shark-container">
@@ -169,8 +273,40 @@
         Don't worry about losing data, most of these save (such as Cookie
         Clicker)
       </p>
+
+      <!-- New big buttons container -->
+      <div class="big-buttons-container">
+        <button
+          class="big-btn"
+          onclick="redirectTo('https://nowgg.is-really.pro/worksheets/search.html', false)"
+        >
+          <img src="src/google.png" alt="Browser" />
+        </button>
+        <button
+          class="big-btn"
+          onclick="redirectTo('src/sites/Minecraft.html', true)"
+        >
+          <img src="src/minecraft.jpg" alt="Minecraft" />
+        </button>
+        <button
+          class="big-btn"
+          onclick="redirectTo('https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/bobydob/JSEngine@c0c9f32fd575688ff4b14309e9acf19b73f15e2a/build/bs/bs.xml&container=ig', true)"
+        >
+          <img src="src/basketball-stars.jpg" alt="Slope" />
+        </button>
+        <button
+          class="big-btn"
+          onclick="redirectTo('https://nowgg.is-really.pro/worksheets/index.html', false)"
+        >
+          <img src="src/hacker.gif" alt="Cookie Clicker" />
+        </button>
+        <button class="big-btn" onclick="redirectTo('src/sites/a.html', true)">
+          <img src="src/roblox.png" alt="Roblox" />
+        </button>
+      </div>
+
       <div class="grid-container">
-        <!-- Buttons with icons -->
+        <!-- Rest of the grid buttons -->
         <div class="grid-item">
           <button
             class="grid-btn"
@@ -443,6 +579,98 @@
           </button>
           <p>Happy wheels</p>
         </div>
+
+        <div class="grid-item">
+          <button
+            class="grid-btn"
+            onclick="redirectTo('https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/1ee20621-61bc-4ec8-a8ec-5e839c2e6edc%2Fpapa-s-wingeria.xml&container=ig', true)"
+          >
+            <img src="src/wingeria.webp" alt="Roblox" />
+          </button>
+          <p>Papa's Wingeria</p>
+        </div>
+
+        <div class="grid-item">
+          <button
+            class="grid-btn"
+            onclick="redirectTo('https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/1ee20621-61bc-4ec8-a8ec-5e839c2e6edc%2Fpapa-s-freezeria.xml&container=ig', true)"
+          >
+            <img src="src/freezeria.png" alt="Roblox" />
+          </button>
+          <p>Papa's Freezeria</p>
+        </div>
+
+        <div class="grid-item">
+          <button
+            class="grid-btn"
+            onclick="redirectTo('https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/sk1bx/awesome-aws@37c682c65a5a4c1ddc5b5ff2b840924526f209b4/scripts/blf.xml&container=ig', true)"
+          >
+            <img src="src/bitlife.webp" alt="Roblox" />
+          </button>
+          <p>Bitlife</p>
+        </div>
+
+        <div class="grid-item">
+          <button
+            class="grid-btn"
+            onclick="redirectTo('https://ubg365.github.io/subway-surfers/play.html', true)"
+          >
+            <img src="src/subwaysurfers.jpg" alt="Roblox" />
+          </button>
+          <p>Subway Surfers</p>
+        </div>
+
+        <div class="grid-item">
+          <button
+            class="grid-btn"
+            onclick="redirectTo('https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/sk1bx/version@93f7f60b0f054c956ca9b6622f2daeeeb450632c/death_run.xml&container=ig', true)"
+          >
+            <img src="src/deathrun3d.png" alt="Roblox" />
+          </button>
+          <p>Death Run 3D</p>
+        </div>
+
+        <div class="grid-item">
+          <button
+            class="grid-btn"
+            onclick="redirectTo('https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/1ee20621-61bc-4ec8-a8ec-5e839c2e6edc%2Ffive-nights-at-freddy-s.xml&container=ig', true)"
+          >
+            <img src="src/fnaf.png" alt="Roblox" />
+          </button>
+          <p>Five Nights at Freddy</p>
+        </div>
+
+        <div class="grid-item">
+          <button
+            class="grid-btn"
+            onclick="redirectTo('https://baldis-basics.github.io/file/', true)"
+          >
+            <img src="src/baldi.jpeg" alt="Roblox" />
+          </button>
+          <p>Baldi's Basics</p>
+        </div>
+
+        <div class="grid-item">
+          <button
+            class="grid-btn"
+            onclick="redirectTo('https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/1ee20621-61bc-4ec8-a8ec-5e839c2e6edc%2Fcat-in-japan.xml&container=ig', true)"
+          >
+            <img src="src/catinjapan.webp" alt="Roblox" />
+          </button>
+          <p>Cat in Japan</p>
+        </div>
+      </div>
+    </div>
+    <div class="overlay" id="overlay">
+      <div class="overlay-content">
+        <h2>Password Protected</h2>
+        <input
+          type="password"
+          id="password-input"
+          placeholder="Enter Password"
+        />
+        <br />
+        <button onclick="checkPassword()">Submit</button>
       </div>
     </div>
     <div class="version-info">version 1.2</div>
@@ -456,7 +684,21 @@
       >Loading…</iframe
     >
     <script>
-      function redirectTo(url, cloak) {
+      const overlay = document.getElementById("overlay");
+      const correctPassword = "Troevan123"; // Update this with your desired password
+
+      // Simplified redirectTo function with cloaking and optional password protection
+      function redirectTo(url, cloak = false, passwordRequired = false) {
+        if (passwordRequired) {
+          overlay.style.display = "flex";
+          localStorage.setItem("redirectUrl", url); // Store the URL to redirect to after password check
+          localStorage.setItem("cloak", cloak); // Store if it should be cloaked
+        } else {
+          openUrl(url, cloak); // Open the URL directly if no password is required
+        }
+      }
+
+      function openUrl(url, cloak) {
         if (cloak) {
           var win = window.open("about:blank", "_blank");
           win.document.body.style.margin = "0";
@@ -473,18 +715,33 @@
         }
       }
 
+      function checkPassword() {
+        const inputPassword = document.getElementById("password-input").value;
+        const redirectUrl = localStorage.getItem("redirectUrl");
+        const cloak = JSON.parse(localStorage.getItem("cloak"));
+
+        if (inputPassword === correctPassword) {
+          overlay.style.display = "none"; // Hide the overlay
+          openUrl(redirectUrl, cloak); // Redirect to the stored URL, with or without cloaking
+          localStorage.removeItem("redirectUrl"); // Clear stored URL
+          localStorage.removeItem("cloak"); // Clear stored cloaking preference
+        } else {
+          alert("Incorrect password. Please try again."); // Alert if password is incorrect
+        }
+      }
+
       function filterGames() {
-        const query = document
+        const searchTerm = document
           .getElementById("search-input")
           .value.toLowerCase();
-        const buttons = document.querySelectorAll(".grid-item");
+        const gridItems = document.querySelectorAll(".grid-item");
 
-        buttons.forEach((button) => {
-          const gameName = button.querySelector("p").textContent.toLowerCase();
-          if (gameName.includes(query)) {
-            button.style.display = "block";
+        gridItems.forEach((item) => {
+          const gameTitle = item.querySelector("p").textContent.toLowerCase();
+          if (gameTitle.includes(searchTerm)) {
+            item.style.display = "block";
           } else {
-            button.style.display = "none";
+            item.style.display = "none";
           }
         });
       }
