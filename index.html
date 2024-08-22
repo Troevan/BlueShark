@@ -660,6 +660,37 @@
           </button>
           <p>Cat in Japan</p>
         </div>
+        
+        <div class="grid-item">
+          <button
+            class="grid-btn"
+            onclick="redirectTo('https://github.com/Troevan/BlueShark/blob/main/index.html', true, true)"
+          >
+            <img src="src/github.png" alt="github" />
+          </button>
+          <p>[DEVELOPER] Github</p>
+        </div>
+
+        <div class="grid-item">
+          <button
+            class="grid-btn"
+            onclick="redirectTo('https://github.com/Troevan/BlueShark/upload/main/src', true, true)"
+          >
+            <img src="src/github.png" alt="github" />
+          </button>
+          <p>[DEVELOPER] src</p>
+        </div>
+
+        <div class="grid-item">
+          <button
+            class="grid-btn"
+            onclick="redirectTo('https://github.com/Troevan/BlueShark', true)"
+          >
+            <img src="src/github.png" alt="github" />
+          </button>
+          <p>Github Page</p>
+        </div>
+        
       </div>
     </div>
     <div class="overlay" id="overlay">
@@ -686,7 +717,7 @@
     >
     <script>
       const overlay = document.getElementById("overlay");
-      const correctPassword = "Troevan123"; // Update this with your desired password
+      const correctPassword = "Pizzacake";
 
       // Simplified redirectTo function with cloaking and optional password protection
       function redirectTo(url, cloak = false, passwordRequired = false) {
@@ -695,7 +726,7 @@
           localStorage.setItem("redirectUrl", url); // Store the URL to redirect to after password check
           localStorage.setItem("cloak", cloak); // Store if it should be cloaked
         } else {
-          openUrl(url, cloak); // Open the URL directly if no password is required
+          openUrl(url, cloak);
         }
       }
 
