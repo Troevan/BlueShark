@@ -2,13 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
     <title>Blue Shark - Troevan</title>
     <style>
       /* Combined CSS */
 
       /* Reset transition and transform effects on the body */
-      body {
+      html, body {
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+
         margin: 0;
         font-family: "Arial", sans-serif;
         background: linear-gradient(to bottom, #d8e1e3, #c4d1d5);
@@ -943,12 +946,6 @@
       // Force scroll to top on page load
       window.addEventListener("load", function () {
         window.scrollTo(0, 0); // Scroll to the top immediately
-        document.body.style.overflow = "hidden"; // Disable scrolling initially
-
-        // Re-enable scrolling after 2 seconds
-        setTimeout(function () {
-          document.body.style.overflow = "auto"; // Enable scrolling after delay
-        }, 2000); // 2 seconds delay
       });
       document.addEventListener("DOMContentLoaded", function () {
         const gameList = document.getElementById("game-list");
