@@ -42,7 +42,6 @@ const overlay = document.getElementById("overlay");
         });
 
         // Initialize sidebar state
-        sidebar.classList.add("visible");
         // Filter games based on search input
         window.filterGames = function () {
           const searchTerm = document
