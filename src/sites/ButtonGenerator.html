@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f4f4f4;
+      }
+      .container {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 100%;
+        max-width: 600px;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin: 10px 0 5px;
+      }
+      input[type="text"],
+      input[type="checkbox"] {
+        width: calc(100% - 16px);
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      textarea {
+        width: calc(100% - 16px);
+        height: 120px;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: monospace;
+        white-space: pre-wrap;
+        overflow: auto;
+        box-sizing: border-box;
+      }
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      button {
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .copy-btn {
+        background-color: #28a745;
+      }
+      .copy-btn:hover {
+        background-color: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Button HTML Generator</h1>
+      <label for="image-src">Image Source URL:</label>
+      <input type="text" id="image-src" placeholder="Enter image source URL" />
+
+      <label for="text-src">Text Source:</label>
+      <input type="text" id="text-src" placeholder="Enter text" />
+
+      <label for="website">Website URL:</label>
+      <input type="text" id="website" placeholder="Enter website URL" />
+
+      <label for="cloaked">Cloaked:</label>
+      <input type="checkbox" id="cloaked" checked />
+
+      <button onclick="generateButton()">Generate Button HTML</button>
+      <div class="button-container">
+        <textarea id="output" readonly></textarea>
+        <button class="copy-btn" onclick="copyToClipboard()">
+          Copy to Clipboard
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function generateButton() {
+        const imageSrc = document.getElementById("image-src").value;
+        const textSrc = document.getElementById("text-src").value;
+        const website = document.getElementById("website").value;
+        const cloaked = document.getElementById("cloaked").checked;
+
+        const cloakedValue = cloaked ? "true" : "false";
+        const buttonHTML = `
+<div class="grid-item">
+  <button
+    class="grid-btn"
+    onclick="redirectTo('${website}', ${cloakedValue})"
+  >
+    <img src="${imageSrc}" />
+  </button>
+  <p>${textSrc}</p>
+</div>`;
+
+        document.getElementById("output").value = buttonHTML.trim();
+      }
+
+      function copyToClipboard() {
+        const output = document.getElementById("output");
+        output.select();
+        document.execCommand("copy");
+        alert("Copied to clipboard!");
+      }
+    </script>
+  </body>
+</html>
