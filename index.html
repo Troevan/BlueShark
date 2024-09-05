@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blue Shark - Troevan</title>
     <style>
+      /* Combined CSS */
+
+      /* Reset transition and transform effects on the body */
       body {
         margin: 0;
         font-family: "Arial", sans-serif;
-        background: linear-gradient(
-          to bottom,
-          #d8e1e3,
-          #c4d1d5
-        ); /* Dark blue to black gradient */
+        background: linear-gradient(to bottom, #d8e1e3, #c4d1d5);
         color: #d8e1e3;
         text-align: center;
         overflow-x: hidden;
-        animation: fadeInUp 2s ease-out;
+        overflow: hidden; /* Disable scrolling initially */
       }
 
       .header {
@@ -29,9 +28,7 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         animation: slideIn 1s ease-out;
       }
-      p {
-        color: #3b6773;
-      }
+
       .header img {
         width: 60px;
         height: auto;
@@ -41,7 +38,7 @@
       }
 
       .header img:hover {
-        transform: scale(1.1);
+        transform: scale(1.1) rotate(5deg);
       }
 
       .header h1 {
@@ -49,18 +46,24 @@
         color: #3b6773;
         margin: 0;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        animation: fadeInUp 2s ease-out;
+        animation: fadeInUp 2s ease-out,
+          colorChange 5s infinite alternate ease-in-out;
+      }
+
+      p {
+        color: #3b6773;
+        animation: textGlow 3s infinite alternate ease-in-out;
       }
 
       .container {
         padding: 30px;
-        animation: fadeInUp 2s ease-out;
       }
 
       .search-bar {
+        border-radius: 8px;
         margin: 30px auto;
         max-width: 600px;
-        animation: fadeInUp 2s ease-out;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       }
 
       .search-bar input {
@@ -72,12 +75,13 @@
         color: #3b6773;
         font-size: 16px;
         transition: border-color 0.3s ease;
-        animation: fadeInUp 2s ease-out;
       }
 
       .search-bar input:focus {
         border-color: #3b6773;
         outline: none;
+        background: #f2f4f5;
+        animation: ripple 1.5s ease-in-out;
       }
 
       .big-buttons-container {
@@ -88,6 +92,7 @@
         margin-bottom: 50px;
         animation: fadeInUp 1s ease-out;
       }
+
       .developer-container {
         display: flex;
         flex-wrap: wrap;
@@ -109,13 +114,15 @@
         align-items: center;
         overflow: hidden;
         position: relative;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        animation: fadeInUp 2s ease-out;
+        transition: transform 0.1s ease, box-shadow 0.1s ease;
       }
 
       .big-btn img {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: auto;
+        height: 100%;
         object-fit: cover;
         transition: opacity 0.3s ease;
         animation: fadeInUp 2s ease-out;
@@ -124,6 +131,7 @@
       .big-btn:hover {
         transform: scale(1.05);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        animation: wave 1.5s ease-in-out;
       }
 
       .big-btn:hover img {
@@ -140,6 +148,9 @@
       }
 
       .grid-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
         animation: fadeInUp 2s ease-out;
       }
@@ -156,19 +167,22 @@
         align-items: center;
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        animation: fadeInUp 2s ease-out;
+        animation: fadeInUp 2s ease-out, wave 2s infinite ease-in-out;
       }
 
       .grid-btn img {
-        width: 200%;
-        height: 140%;
-        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
       }
 
       .grid-btn:hover {
         transform: scale(1.1);
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        animation: ripple 1.2s ease-in-out;
       }
 
       .grid-item p {
@@ -176,6 +190,7 @@
         font-size: 18px;
         color: #3b6773;
         transition: opacity 0.3s ease;
+        margin-bottom: 0;
       }
 
       .overlay {
@@ -218,15 +233,19 @@
         color: #d8e1e3;
         cursor: pointer;
         transition: background-color 0.3s ease, transform 0.3s ease;
+        animation: bounce 5s infinite ease-in-out;
       }
 
       button:hover {
         background-color: #3b6773;
         transform: scale(1.05);
       }
+
       .Blue {
         color: #3b6773;
+        animation: glow 6s infinite ease-in-out;
       }
+
       .version-info {
         color: #3b6773;
         margin: 30px 0;
@@ -251,18 +270,16 @@
         background-color: #333;
         color: #fff;
         overflow: auto;
-        transition: transform 0.3s ease;
-        border-radius: 0 10px 10px 0; /* Rounded corners on the right side */
-        transform: translateX(0); /* Start with sidebar visible */
-        z-index: 10; /* Ensure it's on top */
+        transition: transform 0.3s ease, background-color 0.5s;
+        border-radius: 0 10px 10px 0;
+        transform: translateX(0);
+        z-index: 10;
       }
 
-      /* Sidebar hidden state */
       .sidebar.hidden {
-        transform: translateX(-100%); /* Hide sidebar offscreen */
+        transform: translateX(-100%);
       }
 
-      /* List styling inside the sidebar */
       #game-list {
         list-style-type: none;
         padding: 0;
@@ -271,26 +288,21 @@
 
       #game-list li {
         padding: 10px;
-      }
-
-      #game-list li a {
         color: #fff;
-        text-decoration: none;
-      }
-
-      /* Toggle button styling */
-
-      /* Optional: add a transition effect to the list items */
-      #game-list li {
         opacity: 0;
         transition: opacity 0.3s ease;
       }
 
-      /* When sidebar is visible, show list items */
+      #game-list li a {
+        color: #fff !important; /* Force white text color */
+        text-decoration: none;
+      }
+
       .sidebar.visible #game-list li {
         opacity: 1;
       }
 
+      /* Animations */
       @keyframes slideIn {
         from {
           transform: translateY(-100%);
@@ -314,11 +326,89 @@
       @keyframes fadeInUp {
         from {
           opacity: 0;
-          transform: translateY(20px);
+          transform: translateY(100%);
         }
         to {
           opacity: 1;
           transform: translateY(0);
+        }
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 10px #fff;
+        }
+        to {
+          text-shadow: 0 0 20px #3b6773;
+        }
+      }
+
+      @keyframes wave {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes textBounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      @keyframes ripple {
+        0% {
+          box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+        }
+        100% {
+          box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      @keyframes waveBackground {
+        0% {
+          background-color: #333;
+        }
+        100% {
+          background-color: #3b6773;
+        }
+      }
+
+      @keyframes jello {
+        0%,
+        11.1%,
+        100% {
+          transform: none;
+        }
+        22.2% {
+          transform: skewX(-12.5deg) skewY(-12.5deg);
+        }
+        33.3% {
+          transform: skewX(6.25deg) skewY(6.25deg);
+        }
+        44.4% {
+          transform: skewX(-3.125deg) skewY(-3.125deg);
+        }
+        55.5% {
+          transform: skewX(1.5625deg) skewY(1.5625deg);
+        }
+        66.6% {
+          transform: skewX(-0.78125deg) skewY(-0.78125deg);
+        }
+        77.7% {
+          transform: skewX(0.390625deg) skewY(0.390625deg);
+        }
+        88.8% {
+          transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
         }
       }
     </style>
@@ -369,11 +459,11 @@
         </button>
         <button
           class="big-btn"
-          onclick="redirectTo('https://nowgg.is-really.pro/worksheets/index.html', false)"
+          onclick="redirectTo('https://xn--31byd1i.net/apps/roblox-corporation/5349/roblox.html', false)"
         >
           <img src="src/hacker.gif" alt="Cookie Clicker" />
         </button>
-        <button class="big-btn" onclick="redirectTo('https://xn--31byd1i.net/apps/roblox-corporation/5349/roblox.html', false)">
+        <button class="big-btn" onclick="redirectTo('src/sites/a.html', true)">
           <img src="src/roblox.png" alt="Roblox" />
         </button>
       </div>
@@ -536,7 +626,7 @@
         <div class="grid-item">
           <button
             class="grid-btn"
-            onclick="redirectTo('https://xn--31byd1i.net/apps/roblox-corporation/5349/roblox.html', false)"
+            onclick="redirectTo('https://xn--31byd1i.net/apps/roblox-corporation/5349/roblox.html', true)"
           >
             <img src="src/roblox.png" alt="Roblox" />
           </button>
@@ -850,6 +940,16 @@
     <script>
       const overlay = document.getElementById("overlay");
       const correctPassword = "Pizzacake";
+      // Force scroll to top on page load
+      window.addEventListener("load", function () {
+        window.scrollTo(0, 0); // Scroll to the top immediately
+        document.body.style.overflow = "hidden"; // Disable scrolling initially
+
+        // Re-enable scrolling after 2 seconds
+        setTimeout(function () {
+          document.body.style.overflow = "auto"; // Enable scrolling after delay
+        }, 2000); // 2 seconds delay
+      });
       document.addEventListener("DOMContentLoaded", function () {
         const gameList = document.getElementById("game-list");
         const sidebar = document.querySelector(".sidebar");
