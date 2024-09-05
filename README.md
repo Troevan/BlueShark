@@ -1,11 +1,18 @@
-# BlueShark (OHS Foundation)
-Home of the Unblocked Games
-  
-- Hello do you want to bypass school? Look no further here is the Blue Shark webpage at
+# Blue Shark \ OHS - Master of Unblocked Games
 https://troevan.github.io/BlueShark/
 
-- So many games like unblock google, unblock tiktok, and unblock bitlife
+Welcome to Blue Shark where the web's most unblocked games and tools are available for your gaming and browsing pleasure. This is your gateway to an array of games, proxies, and online tools designed for maximum accessibility and minimal hassle.
 
-- Very active support, Request a game you should see it here tommorow.
+Features:
 
-- UNBLOCKED CLASSROOM 6x
+UNBLOCKED ROBLOX
+UNBLOCKED MINECRAFT 1.8.8
+
+UNBLOCKED GOOGLE
+UNBLOCKED CLASSROOM 6x
+
+WE HAVE A GOOGLE FORM JUST FOR YOU TO SUBMIT REQUESTS, WE ARE SUPER UPDATED
+
+WHY ARE YOU WAITING? JOIN THE WAVE
+
+https://troevan.github.io/BlueShark/
