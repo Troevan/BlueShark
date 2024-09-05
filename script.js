@@ -1,3 +1,4 @@
+document.getElementById("container").innerHTML = '<object type="text/html" data="Buttons.html"></object>';
 const overlay = document.getElementById("overlay");
       const correctPassword = "Pizzacake";
       // Force scroll to top on page load
