@@ -5,26 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>𝔹𝕝𝕦𝕖 𝕊𝕙𝕒𝕣𝕜</title>
     <link rel="stylesheet" href="src/styles.css" />
-    <link rel="icon" type="image/png" href="src/shark (2).png" />
+    <link id="favicon" rel="icon" type="image/png" href="src/shark (2).png" />
   </head>
   <body>
     <div class="header">
       <h1 class="Blue">Blue Shark</h1>
     </div>
     <button onclick="openGame()">About:Blank Cloak</button>
-  <script>
-    function openGame() {
-var win = window.open()
-var url = "https://troevan.github.io/BlueShark/"
-var iframe = win.document.createElement('iframe')
-iframe.style.width = "100%";
-iframe.style.height = "100%";
-iframe.style.border = "none";
-iframe.src = url
-win.document.body.appendChild(iframe)
-}
-  </script>
-    <div id="container" class="container" w3-include-html="src/Buttons.html"></div>
+    <script>
+      function openGame() {
+        var win = window.open();
+        var url = "https://troevan.github.io/BlueShark/";
+        var iframe = win.document.createElement("iframe");
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.border = "none";
+        iframe.src = url;
+        win.document.body.appendChild(iframe);
+      }
+    </script>
+    <div
+      id="container"
+      class="container"
+      w3-include-html="src/Buttons.html"
+    ></div>
     <div class="overlay" id="overlay">
       <div class="overlay-content">
         <h2>Password Protected</h2>
@@ -84,24 +88,24 @@ win.document.body.appendChild(iframe)
         }
       }
       // Function to change favicon and title
-    function changeFaviconAndTitle(isHidden) {
-      var favicon = document.getElementById('favicon');
-      if (isHidden) {
-        document.title = "Denton ISD";
-        favicon.href = "src/classlink.png";
-      } else {
-        document.title = "𝔹𝕝𝕦𝕖 𝕊𝕙𝕒𝕣𝕜";
-        favicon.href = "src/shark (2).png";
+      function changeFaviconAndTitle(isHidden) {
+        var favicon = document.getElementById("favicon");
+        if (isHidden) {
+          document.title = "Denton ISD";
+          favicon.href = "src/classlink.png";
+        } else {
+          document.title = "𝔹𝕝𝕦𝕖 𝕊𝕙𝕒𝕣𝕜";
+          favicon.href = "src/shark (2).png";
+        }
       }
-    }
-    // Event listener for visibility changes
-    document.addEventListener('visibilitychange', function() {
-      if (document.hidden) {
-        changeFaviconAndTitle(true);
-      } else {
-        changeFaviconAndTitle(false);
-      }
-    });
+      // Event listener for visibility changes
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+          changeFaviconAndTitle(true);
+        } else {
+          changeFaviconAndTitle(false);
+        }
+      });
       includeHTML();
     </script>
   </body>
