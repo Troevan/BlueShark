@@ -83,6 +83,17 @@ win.document.body.appendChild(iframe)
           }
         }
       }
+      // Function to change favicon and title
+    function changeFaviconAndTitle(isHidden) {
+      var favicon = document.getElementById('favicon');
+      if (isHidden) {
+        document.title = "Denton ISD";
+        favicon.href = "src/classlink.png";
+      } else {
+        document.title = "𝔹𝕝𝕦𝕖 𝕊𝕙𝕒𝕣𝕜";
+        favicon.href = "src/shark (2).png";
+      }
+    }
       includeHTML();
     </script>
   </body>
