@@ -84,7 +84,7 @@ const overlay = document.getElementById("overlay");
         }
       }
 
-      function filterGamesS() {
+      function filterGames() {
         const searchTerm = document
           .getElementById("search-input")
           .value.toLowerCase();
