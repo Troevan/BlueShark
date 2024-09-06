@@ -39,22 +39,6 @@ const overlay = document.getElementById("overlay");
           listItem.appendChild(link);
           gameList.appendChild(listItem);
         });
-
-        // Initialize sidebar state
-        // Filter games based on search input
-        window.filterGames = function () {
-          const searchTerm = document
-            .getElementById("search-input")
-            .value.toLowerCase();
-          items.forEach((item) => {
-            const text = item.textContent.toLowerCase();
-            if (text.includes(searchTerm)) {
-              item.style.display = "";
-            } else {
-              item.style.display = "none";
-            }
-          });
-        };
       });
 
       // Simplified redirectTo function with cloaking and optional password protection
