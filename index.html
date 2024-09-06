@@ -94,6 +94,14 @@ win.document.body.appendChild(iframe)
         favicon.href = "src/shark (2).png";
       }
     }
+    // Event listener for visibility changes
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        changeFaviconAndTitle(true);
+      } else {
+        changeFaviconAndTitle(false);
+      }
+    });
       includeHTML();
     </script>
   </body>
