@@ -46,8 +46,6 @@ const overlay = document.getElementById("overlay");
           const searchTerm = document
             .getElementById("search-input")
             .value.toLowerCase();
-          const items = gameList.querySelectorAll("li");
-
           items.forEach((item) => {
             const text = item.textContent.toLowerCase();
             if (text.includes(searchTerm)) {
