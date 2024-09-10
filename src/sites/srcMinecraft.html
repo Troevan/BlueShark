@@ -1,49 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Import Raw HTML</title>
-    <style>
-        #content {
-            width: 100%;
-            height: 100vh; /* Full viewport height */
-            border: none;
-            outline: none;
-            z-index: 0; /* Ensure it's below the animation and unlock message */
-        }
-    </style>
-</head>
-<body>
-    <iframe id="content" tabindex="0"></iframe>
+Minecraft will not work sadly because the file is WAYY too big. If you want it,
+just go to the blue shark form requests at the bottom at the page and send me your gmail
+so i can send it to you (I will send it to you on my alt account)
 
-    <div id="animation"></div>
-    <div id="unlockMessage" class="falling">UNLOCKED</div>
-
-    <script>
-        async function loadContent() {
-            try {
-                const response = await fetch('Minecraft.html');
-                if (!response.ok) throw new Error('Network response was not ok');
-                const text = await response.text();
-                const iframe = document.getElementById('content');
-
-                iframe.onload = function() {
-                    console.log('Iframe loaded successfully');
-                    iframe.focus(); // Fix focus issue for keyboard input
-                };
-                
-                iframe.srcdoc = text;
-            } catch (error) {
-                console.error('Error fetching the content:', error);
-            }
-        }
-
-        
-
-        document.addEventListener('DOMContentLoaded', () => {
-            createAnimation();
-        });
-    </script>
-</body>
-</html>
+The file will be sent in html format, download it and run it by double clicking it in files.
