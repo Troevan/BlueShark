@@ -1,0 +1,4 @@
+-- BlueShark Data
+-
+-- This is simple data collected on the total visits, average time, and average day.
+-
