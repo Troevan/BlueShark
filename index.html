@@ -1,112 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>𝔹𝕝𝕦𝕖 𝕊𝕙𝕒𝕣𝕜</title>
-    <link rel="stylesheet" href="src/styles.css" />
-    <link id="favicon" rel="icon" type="image/png" href="src/shark (2).png" />
-  </head>
-  <body>
-    <div class="header">
-      <h1 class="Blue">Blue Shark</h1>
-    </div>
-    <button onclick="openGame()">About:Blank Cloak</button>
-    <script>
-      function openGame() {
-        var win = window.open();
-        var url = "https://troevan.github.io/BlueShark/";
-        var iframe = win.document.createElement("iframe");
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.border = "none";
-        iframe.src = url;
-        win.document.body.appendChild(iframe);
-      }
-    </script>
-    <div
-      id="container"
-      class="container"
-      w3-include-html="src/Buttons.html"
-    ></div>
-    <div class="overlay" id="overlay">
-      <div class="overlay-content">
-        <h2>Password Protected</h2>
-        <input
-          type="password"
-          id="password-input"
-          placeholder="Enter Password"
-        />
-        <br />
-        <button onclick="checkPassword()">Submit</button>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>𝔹𝕝𝕦𝕖 𝕊𝕙𝕒𝕣𝕜</title>
+      <link rel="stylesheet" href="src/styles.css" />
+      <link id="favicon" rel="icon" type="image/png" href="src/shark (2).png" />
+   </head>
+   <body>
+      <div class="header">
+         <h1 class="Blue">Blue Shark</h1>
       </div>
-    </div>
-    <div>
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSd6Uoxa6_1x-kLRln7l8rJ7XS10k7GYJk3W9Z7fo877ONSWIg/viewform?embedded=true"
-        width="640"
-        height="1001"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        >Loading…</iframe
-      >
-    </div>
-    <div></div>
-    <div class="version-info">Version 1.3</div>
-    <script src="src/script.js"></script>
-    <script>
-      function includeHTML() {
-        var z, i, elmnt, file, xhttp;
-        /* Loop through a collection of all HTML elements: */
-        z = document.getElementsByTagName("*");
-        for (i = 0; i < z.length; i++) {
-          elmnt = z[i];
-          /*search for elements with a certain atrribute:*/
-          file = elmnt.getAttribute("w3-include-html");
-          if (file) {
-            /* Make an HTTP request using the attribute value as the file name: */
-            xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-              if (this.readyState == 4) {
-                if (this.status == 200) {
-                  elmnt.innerHTML = this.responseText;
-                }
-                if (this.status == 404) {
-                  elmnt.innerHTML = "Page not found.";
-                }
-                /* Remove the attribute, and call this function once more: */
-                elmnt.removeAttribute("w3-include-html");
-                includeHTML();
-              }
-            };
-            xhttp.open("GET", file, true);
-            xhttp.send();
-            /* Exit the function: */
-            return;
-          }
-        }
-      }
-      // Function to change favicon and title
-      function changeFaviconAndTitle(isHidden) {
-        var favicon = document.getElementById("favicon");
-        if (isHidden) {
-          document.title = "Denton ISD";
-          favicon.href = "src/classlink.ico";
-        } else {
-          document.title = "𝔹𝕝𝕦𝕖 𝕊𝕙𝕒𝕣𝕜";
-          favicon.href = "src/shark (2).png";
-        }
-      }
-      // Event listener for visibility changes
-      document.addEventListener("visibilitychange", function () {
-        if (document.hidden) {
-          changeFaviconAndTitle(true);
-        } else {
-          changeFaviconAndTitle(false);
-        }
-      });
-      includeHTML();
-    </script>
-  </body>
+      <button onclick="openGame()">About:Blank Cloak</button>
+      <script>
+         function openGame() {
+           var win = window.open();
+           var url = "https://troevan.github.io/BlueShark/";
+           var iframe = win.document.createElement("iframe");
+           iframe.style.width = "100%";
+           iframe.style.height = "100%";
+           iframe.style.border = "none";
+           iframe.src = url;
+           win.document.body.appendChild(iframe);
+         }
+      </script>
+      <div
+         id="container"
+         class="container"
+         w3-include-html="src/Buttons.html"
+         ></div>
+      <div class="overlay" id="overlay">
+         <div class="overlay-content">
+            <h2>Password Protected</h2>
+            <input
+               type="password"
+               id="password-input"
+               placeholder="Enter Password"
+               />
+            <br />
+            <button onclick="checkPassword()">Submit</button>
+         </div>
+      </div>
+      <div>
+         <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSd6Uoxa6_1x-kLRln7l8rJ7XS10k7GYJk3W9Z7fo877ONSWIg/viewform?embedded=true"
+            width="640"
+            height="1001"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            >Loading…</iframe
+            >
+      </div>
+      <div></div>
+      <div class="version-info">Version 1.3</div>
+      <script src="src/script.js"></script>
+      <script>
+         async function updateVisitData() {
+         const response = await fetch('src/sites/data.txt');
+         let data = await response.text();
+         const visits = data.split('\n').filter(Boolean).map(line => JSON.parse(line));
+         
+         const now = new Date();
+         const options = { timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+         const formatter = new Intl.DateTimeFormat('en-US', options);
+         const formattedDate = formatter.format(now);
+         
+         const [month, day, year, hour, minute] = formattedDate.split(/[/, :]/);
+         const visitDate = `${year}-${month}-${day}`; // YYYY-MM-DD
+         const visitTime = new Date(`${year}-${month}-${day}T${hour}:${minute}:00-06:00`).getTime(); // Timestamp in milliseconds for Chicago timezone
+         const visitDay = now.toLocaleString('en-US', { weekday: 'long', timeZone: 'America/Chicago' });
+         
+         // Store current visit
+         visits.push({ date: visitDate, time: formattedDate, day: visitDay }); // Save formatted date
+         
+         // Calculate averages
+         const totalVisits = visits.length;
+         const totalTime = visits.reduce((acc, visit) => acc + (new Date(visit.time).getTime() - new Date(visit.date).getTime()), 0);
+         const averageTime = totalVisits ? totalTime / totalVisits : 0;
+         
+         const dayCounts = {};
+         visits.forEach(visit => {
+           dayCounts[visit.day] = (dayCounts[visit.day] || 0) + 1;
+         });
+         
+         const averageDay = Object.entries(dayCounts).reduce((a, b) => (b[1] > a[1] ? b : a))[0];
+         
+         // Save updated data
+         const updatedData = visits.map(visit => JSON.stringify(visit)).join('\n');
+         await fetch('src/sites/data.txt', {
+           method: 'PUT',
+           headers: { 'Content-Type': 'text/plain' },
+           body: updatedData
+         });
+         
+         console.log({
+           totalVisits,
+           averageTime,
+           averageDay,
+         });
+         }
+         
+         updateVisitData();
+         function includeHTML() {
+           var z, i, elmnt, file, xhttp;
+           /* Loop through a collection of all HTML elements: */
+           z = document.getElementsByTagName("*");
+           for (i = 0; i < z.length; i++) {
+             elmnt = z[i];
+             /*search for elements with a certain atrribute:*/
+             file = elmnt.getAttribute("w3-include-html");
+             if (file) {
+               /* Make an HTTP request using the attribute value as the file name: */
+               xhttp = new XMLHttpRequest();
+               xhttp.onreadystatechange = function () {
+                 if (this.readyState == 4) {
+                   if (this.status == 200) {
+                     elmnt.innerHTML = this.responseText;
+                   }
+                   if (this.status == 404) {
+                     elmnt.innerHTML = "Page not found.";
+                   }
+                   /* Remove the attribute, and call this function once more: */
+                   elmnt.removeAttribute("w3-include-html");
+                   includeHTML();
+                 }
+               };
+               xhttp.open("GET", file, true);
+               xhttp.send();
+               /* Exit the function: */
+               return;
+             }
+           }
+         }
+         // Function to change favicon and title
+         function changeFaviconAndTitle(isHidden) {
+           var favicon = document.getElementById("favicon");
+           if (isHidden) {
+             document.title = "Denton ISD";
+             favicon.href = "src/classlink.ico";
+           } else {
+             document.title = "𝔹𝕝𝕦𝕖 𝕊𝕙𝕒𝕣𝕜";
+             favicon.href = "src/shark (2).png";
+           }
+         }
+         // Event listener for visibility changes
+         document.addEventListener("visibilitychange", function () {
+           if (document.hidden) {
+             changeFaviconAndTitle(true);
+           } else {
+             changeFaviconAndTitle(false);
+           }
+         });
+         includeHTML();
+      </script>
+   </body>
 </html>
