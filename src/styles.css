@@ -160,7 +160,7 @@ body {
         align-items: center;
         overflow: auto;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        animation: fadeInUp 2s ease-out, wave 2s infinite ease-in-out;
+        animation: InUp 2s ease-out, wave 2s infinite ease-in-out;
       }
 
       .grid-btn img {
@@ -296,6 +296,14 @@ body {
       }
 
       /* Animations */
+      @keyframes InUp {
+        from {
+          transform: translateY(-100%);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
       @keyframes slideIn {
         from {
           transform: translateY(-100%);
