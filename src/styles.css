@@ -240,7 +240,7 @@ body {
       }
 
       .version-info {
-        color: #FF0000;
+        color: #00FF00;
         margin: 30px 0;
         animation: fadeInUp 2s ease-out;
       }
