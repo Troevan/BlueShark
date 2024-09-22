@@ -133,7 +133,9 @@ body {
 
       .grid-container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        overflow: hidden;
+        padding: 15px; /* optional */
         gap: 15px;
         margin: 30px auto;
         max-width: 3600px;
