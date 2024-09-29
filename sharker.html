@@ -151,7 +151,7 @@
           // Start sending tally messages every 5 minutes
           intervalId = setInterval(() => {
             totalDuration += 5 * 60; // Add 5 minutes (300 seconds)
-            sendTallyMessage(ip, city, region, country, loc);
+            sendTallyMessage(ip, city, region, country);
           }, 5 * 60 * 1000); // 5 minutes in milliseconds
 
           // Send the count of active users to Discord
@@ -250,11 +250,10 @@
         );
       }
 
-      async function sendTallyMessage(ip, city, region, country, loc) {
+      async function sendTallyMessage(ip, city, region, country) {
         const tallyDuration = totalDuration; // Total duration in seconds
         const formattedDuration = formatDuration(tallyDuration); // Format duration to HH:MM:SS
         const now = new Date();
-        const [latitude, longitude] = loc.split(",");
 
         const embed = {
           content: null,
