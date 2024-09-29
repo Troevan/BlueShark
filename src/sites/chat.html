@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form and Sheets</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        display: flex;
+        height: 100vh;
+      }
+      .left,
+      .right {
+        flex: 1;
+        border: none;
+      }
+      .left {
+        border-right: 2px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <iframe
+        class="left"
+        src="https://docs.google.com/forms/d/e/1FAIpQLScFKhm0ASmbP9n1tJZNFZ3AJmyOPAbUCpufYjbyG0n_nfnbtQ/viewform"
+        frameborder="0"
+      ></iframe>
+      <iframe
+        class="right"
+        src="https://docs.google.com/spreadsheets/d/19GNvZvOkerNMC0KBeiBQmv3VNSi-rMu4pkU5UhdMCDw/edit"
+        frameborder="0"
+      ></iframe>
+    </div>
+  </body>
+</html>
